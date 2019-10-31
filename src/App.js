@@ -40,9 +40,20 @@ class App extends Component {
   }
 */
 
-toggleCharactersHandler = () => {
+/*
+componentDidUpdate() {
+  fetch('http://localhost:8000/api/program/' + this.state.selectedProgram + '/characters')
+  .then(res => res.json())
+  .then((data) => {
+    this.setState({ programs: data.data })
+  })
+}
+*/
+
+toggleCharactersHandler = (index) => {
   const doesShow = this.state.showCharacters;
   this.setState({showCharacters: !doesShow});
+  console.log(this.state.selectedProgram);
 }
 
   render() {
