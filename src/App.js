@@ -35,6 +35,7 @@ class App extends Component {
 
     return (
       <div>
+        <h1>{this.props.title}</h1>
         {progs}
       </div>
     );
