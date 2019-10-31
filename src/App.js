@@ -26,7 +26,8 @@ class App extends Component {
       "character_photo": "http://localhost:8000/pics/media/anna.png"
     }],
     characterComments: [],
-    selectedProgram: 0
+    selectedProgram: 0,
+    showCharacters: false
   }
 
 /* TODO: Use Axios instead
@@ -39,7 +40,25 @@ class App extends Component {
   }
 */
 
+toggleCharactersHandler = () => {
+  const doesShow = this.state.showCharacters;
+  this.setState({showCharacters: !doesShow});
+}
+
   render() {
+
+  let characters = null;
+
+  if (this.state.showCharacters) {
+    characters = (
+      <div>
+        {this.state.characters.map((characters, index) => 
+        <Character 
+        name={characters.name}
+        description={characters.description} />)}
+      </div>
+    );
+  }
 
     let progs = null;
 
@@ -49,19 +68,9 @@ class App extends Component {
           return <Program
           name={programs.name}
           description={programs.description}
+          clicked={this.toggleCharactersHandler}
           />
         })}
-      </div>
-    );
-
-    let chars = null;
-
-    chars = (
-      <div>
-        {this.state.characters.map((characters, index) => 
-        <Character 
-        name={characters.name}
-        description={characters.description} />)}
       </div>
     );
 
@@ -69,7 +78,7 @@ class App extends Component {
       <div>
         <h1>{this.props.title}</h1>
         {progs}
-        {chars}
+        {characters}
       </div>
     );
   };
