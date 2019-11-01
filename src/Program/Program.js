@@ -8,6 +8,7 @@ const person = (props) => {
             {props.name}
             </h1>
             <p>{props.description}</p>
+            <p>{props.programId}</p>
         </div>
     )
 };

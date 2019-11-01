@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
 import Program from './Program/Program';
 import Character from './Character/Character';
@@ -7,10 +7,27 @@ import Character from './Character/Character';
 class App extends Component {
 
   state = {
-    programs: [],
+    programs: [{
+      "name": "Test program 1",
+      "description": "This is some test program that is for the development purposes. It is well and nice and everything else also!",
+      "image_alt_text": "some image",
+      "vote_question": "Is this program nice and fine for the stuff that so and that?"
+  }, {
+      "name": "Test program 2",
+      "description": "Some other description",
+      "image_alt_text": "sdfafdsaas",
+      "vote_question": "HOW IS IT?"
+  }],
     characters: [{
       "name": "Character 1",
       "description": "First character for the votelly testing",
+      "image_alt_text": "Anna askar photo",
+      "number_of_votes": 0,
+      "related_program": 1,
+      "character_photo": "http://localhost:8000/pics/media/anna.png"
+    }, {
+      "name": "Character 2",
+      "description": "Second character for the votelly testing",
       "image_alt_text": "Anna askar photo",
       "number_of_votes": 0,
       "related_program": 1,
@@ -20,7 +37,7 @@ class App extends Component {
     selectedProgram: 0,
     showCharacters: false
   }
-
+/*
   componentDidMount() {
     axios.get('http://localhost:1234/api/programs/')
     .then(response => {
@@ -28,11 +45,12 @@ class App extends Component {
       console.log(this.state.programs);
     });
   }
+*/
 
-toggleCharactersHandler = (index) => {
+toggleCharactersHandler = (programId) => {
   const doesShow = this.state.showCharacters;
   this.setState({showCharacters: !doesShow});
-  console.log(this.state.selectedProgram);
+  this.setState({selectedProgram: programId});
 }
 
   render() {
@@ -42,7 +60,7 @@ toggleCharactersHandler = (index) => {
   if (this.state.showCharacters) {
     characters = (
       <div>
-        {this.state.characters.map((characters, index) => 
+        {this.state.characters.map(characters => 
         <Character 
         name={characters.name}
         description={characters.description} />)}
@@ -50,11 +68,12 @@ toggleCharactersHandler = (index) => {
     );
   }
 
-    const programs = this.state.programs.map(program => {
+    const programs = this.state.programs.map((program, index) => {
       return <Program
       name={program.name}
       description={program.description}
-      clicked={this.toggleCharactersHandler}
+      clicked={() => this.toggleCharactersHandler(index)}
+      programId={index + 1}
       />
     });
   
