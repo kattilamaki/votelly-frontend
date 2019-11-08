@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Character from '../Characters/Character/Character';
-import Comments from '../Comments/Comment/Comment';
+import Comments from '../Comments/Comments';
 
 class Characters extends Component {
 
