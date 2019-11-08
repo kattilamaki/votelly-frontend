@@ -9,16 +9,17 @@ class App extends Component {
   state = {
     programs: [],
     selectedProgram: 0,
+    selectedCharacter: 0
   }
 
   componentDidMount() {
     axios.get('http://localhost:8000/api/programs/')
     .then(response => {
-      this.setState({programs: response.data.data});
-    });
+    this.setState({programs: response.data.data});
+    })
   }
 
-toggleCharactersHandler = (programId) => {
+toggleProgramsHandler = (programId) => {
   this.setState({selectedProgram: programId});
 }
 
@@ -30,14 +31,15 @@ toggleCharactersHandler = (programId) => {
       description={program.description}
       programId={program.id}
       key={program.id}
-      clicked={() => this.toggleCharactersHandler(program.id)}
+      clicked={() => this.toggleProgramsHandler(program.id)}
       />
     });
 
     return (
       <div>
         {programs}
-        <Characters id={this.state.selectedProgram} />
+        <Characters
+          id={this.state.selectedProgram} />
       </div>
     );
   };
