@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Character from '../Characters/Character/Character';
 
 class Characters extends Component {
 
@@ -22,7 +23,13 @@ class Characters extends Component {
         if (this.state.characters) {
             const characters = this.state.characters.map(character => {
                 return (
-                    <div>{character.name}</div>
+                    <div>
+                        <Character
+                        name={character.name}
+                        description={character.description}
+                        key={character.id}
+                        numberOfVotes={character.number_of_votes} />
+                    </div>
                 ) 
             });
             return (

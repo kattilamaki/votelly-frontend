@@ -29,6 +29,7 @@ toggleCharactersHandler = (programId) => {
       name={program.name}
       description={program.description}
       programId={program.id}
+      key={program.id}
       clicked={() => this.toggleCharactersHandler(program.id)}
       />
     });
