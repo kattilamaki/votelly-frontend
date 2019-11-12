@@ -39,7 +39,7 @@ class Characters extends Component {
                     </div>
                 ) 
         });
-        
+
         return (
         <div>
         {characters}

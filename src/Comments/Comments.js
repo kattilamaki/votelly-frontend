@@ -16,13 +16,12 @@ class Comments extends Component {
             this.setState({comments: response.data.data});
             this.setState({relatedCharacter: this.props.id});
             })
-            console.log(this.state.relatedCharacter + ' vs ' + this-this.props.id);
         }
     }
 
     render() {
 
-        if (this.state.comments) {
+        if (this.state.comments && this.state.relatedCharacter !== null) {
             const comments = this.state.comments.map(comment => {
                 return (
                     <div>
