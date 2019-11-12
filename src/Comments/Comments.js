@@ -38,7 +38,7 @@ class Comments extends Component {
             )
         }
         else {
-            return(<p>No comments avaiable!</p>)
+            return(<p>Select character to show comments</p>)
         }
 }
 };
