@@ -15,8 +15,9 @@ class Characters extends Component {
         if (this.state.relatedProgram !== this.props.id) {
             axios.get('http://localhost:8000/api/program/' + this.props.id + '/characters/')
             .then(response => {
-            this.setState({characters: response.data.data});
-            this.setState({relatedProgram: this.props.id});
+            this.setState(
+                {characters: response.data.data,
+                relatedProgram: this.props.id});
             })
         }
     }

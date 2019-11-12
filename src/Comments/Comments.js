@@ -13,8 +13,8 @@ class Comments extends Component {
         if (this.state.relatedCharacter !== this.props.id) {
             axios.get('http://localhost:8000/api/character/' + this.props.id + '/comments/')
             .then(response => {
-            this.setState({comments: response.data.data});
-            this.setState({relatedCharacter: this.props.id});
+            this.setState({comments: response.data.data, 
+                relatedCharacter: this.props.id});
             })
         }
     }
