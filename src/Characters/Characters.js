@@ -7,17 +7,17 @@ class Characters extends Component {
 
     state = {
         characters: null,
-        relatedProgram: null,
+        selectedProgram: null,
         selectedCharacter: null
     }
 
     componentDidUpdate() {
-        if (this.state.relatedProgram !== this.props.id) {
+        if (this.state.selectedProgram !== this.props.id) {
             axios.get('http://localhost:8000/api/program/' + this.props.id + '/characters/')
             .then(response => {
             this.setState(
                 {characters: response.data.data,
-                relatedProgram: this.props.id});
+                selectedProgram: this.props.id});
             })
         }
     }
@@ -44,7 +44,9 @@ class Characters extends Component {
         return (
         <div>
         {characters}
-        <Comments id={this.state.selectedCharacter} />
+        <Comments 
+            id={this.state.selectedCharacter}
+            selectedProgram={this.state.selectedProgram} />
         </div>
         )
         }

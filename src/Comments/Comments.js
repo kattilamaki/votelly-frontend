@@ -6,22 +6,25 @@ class Comments extends Component {
 
     state = {
         comments: null,
-        relatedCharacter: null
+        selectedCharacter: null,
+        selectedProgram: null
     }
 
     componentDidUpdate() {
-        if (this.state.relatedCharacter !== this.props.id) {
+        if (this.state.selectedCharacter !== this.props.id) {
             axios.get('http://localhost:8000/api/character/' + this.props.id + '/comments/')
             .then(response => {
             this.setState({comments: response.data.data, 
-                relatedCharacter: this.props.id});
+                selectedCharacter: this.props.id,
+                selectedProgram: this.props.selectedProgram});
             })
         }
+        console.log('Comments componentDidUpdate');
     }
 
     render() {
 
-        if (this.state.comments && this.state.relatedCharacter !== null) {
+        if (this.state.comments && this.state.selectedCharacter !== null) {
             const comments = this.state.comments.map(comment => {
                 return (
                     <div>
