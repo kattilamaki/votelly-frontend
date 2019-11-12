@@ -12,12 +12,12 @@ class Characters extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.selectedProgram !== this.props.id) {
-            axios.get('http://localhost:8000/api/program/' + this.props.id + '/characters/')
+        if (this.state.selectedProgram !== this.props.selectedProgram) {
+            axios.get('http://localhost:8000/api/program/' + this.props.selectedProgram + '/characters/')
             .then(response => {
             this.setState(
                 {characters: response.data.data,
-                selectedProgram: this.props.id});
+                selectedProgram: this.props.selectedProgram});
             })
         }
     }
@@ -30,12 +30,11 @@ class Characters extends Component {
         if (this.state.characters) {
             const characters = this.state.characters.map(character => {
                 return (
-                    <div>
+                    <div key={character.id}>
                         <Character
                         name={character.name}
                         description={character.description}
                         numberOfVotes={character.number_of_votes}
-                        key={character.id}
                         clicked={() => this.toggleCharactersHandler(character.id)} />
                     </div>
                 ) 
@@ -45,7 +44,7 @@ class Characters extends Component {
         <div>
         {characters}
         <Comments 
-            id={this.state.selectedCharacter}
+            selectedCharacter={this.state.selectedCharacter}
             selectedProgram={this.state.selectedProgram} />
         </div>
         )

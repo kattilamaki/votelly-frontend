@@ -9,7 +9,6 @@ class App extends Component {
   state = {
     programs: [],
     selectedProgram: 0,
-    selectedCharacter: 0
   }
 
   componentDidMount() {
@@ -39,7 +38,7 @@ toggleProgramsHandler = (programId) => {
       <div>
         {programs}
         <Characters
-          id={this.state.selectedProgram} />
+          selectedProgram={this.state.selectedProgram} />
       </div>
     );
   };

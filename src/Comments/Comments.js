@@ -11,15 +11,14 @@ class Comments extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.selectedCharacter !== this.props.id) {
-            axios.get('http://localhost:8000/api/character/' + this.props.id + '/comments/')
+        if (this.state.selectedCharacter !== this.props.selectedCharacter) {
+            axios.get('http://localhost:8000/api/character/' + this.props.selectedCharacter + '/comments/')
             .then(response => {
             this.setState({comments: response.data.data, 
-                selectedCharacter: this.props.id,
+                selectedCharacter: this.props.selectedCharacter,
                 selectedProgram: this.props.selectedProgram});
             })
         }
-        console.log('Comments componentDidUpdate');
     }
 
     render() {
@@ -27,11 +26,10 @@ class Comments extends Component {
         if (this.state.comments && this.state.selectedCharacter !== null) {
             const comments = this.state.comments.map(comment => {
                 return (
-                    <div>
+                    <div key={comment.id}>
                         <Comment
                         commentText={comment.comment_text}
-                        commentTime={comment.comment_time}
-                        key={comment.id} />
+                        commentTime={comment.comment_time} />
                     </div>
                 ) 
             });
@@ -43,7 +41,7 @@ class Comments extends Component {
         else {
             return(<p>Select character to show comments</p>)
         }
-}
+    }
 };
 
 export default Comments;
