@@ -7,8 +7,8 @@ class Characters extends Component {
 
     state = {
         characters: null,
-        selectedProgram: null,
-        selectedCharacter: null
+        selectedCharacter: null,
+        showComments: false
     }
 
     componentDidUpdate() {
@@ -17,17 +17,20 @@ class Characters extends Component {
             .then(response => {
             this.setState(
                 {characters: response.data.data,
-                selectedProgram: this.props.selectedProgram});
+                selectedProgram: this.props.selectedProgram,
+                showComments: false});
             })
         }
     }
 
     toggleCharactersHandler = (characterId) => {
-        this.setState({selectedCharacter: characterId});
+        this.setState({selectedCharacter: characterId,
+        showComments: true});
     }
 
     render() {
-        if (this.state.characters) {
+
+        if (this.state.characters && this.state.showComments) {
             const characters = this.state.characters.map(character => {
                 return (
                     <div key={character.id}>
@@ -38,23 +41,36 @@ class Characters extends Component {
                         clicked={() => this.toggleCharactersHandler(character.id)} />
                     </div>
                 ) 
-        });
+            });
 
-        return (
-        <div>
-        {characters}
-        <Comments 
-            selectedCharacter={this.state.selectedCharacter}
-            selectedProgram={this.state.selectedProgram} />
-        </div>
-        )
-        }
-        else {
             return (
             <div>
-                Loading!
+            {characters}
+            <Comments 
+                selectedCharacter={this.state.selectedCharacter}
+                showComments={this.state.showComments} />
             </div>
             )
+        } 
+        if (this.state.characters && !this.state.showComments) {
+                const characters = this.state.characters.map(character => {
+                    return (
+                        <div key={character.id}>
+                            <Character
+                            name={character.name}
+                            description={character.description}
+                            numberOfVotes={character.number_of_votes}
+                            clicked={() => this.toggleCharactersHandler(character.id)} />
+                        </div>
+                    ) 
+                });
+                return (
+                    <div>
+                    {characters}
+                    </div>
+                )
+        } else {
+            return (<div>Select character to show comments</div>)
         }
     } 
         
