@@ -30,7 +30,7 @@ class Characters extends Component {
 
     render() {
 
-        if (this.state.characters && this.state.showComments) {
+        if (this.state.characters) {
             const characters = this.state.characters.map(character => {
                 return (
                     <div key={character.id}>
@@ -51,24 +51,6 @@ class Characters extends Component {
                 showComments={this.state.showComments} />
             </div>
             )
-        } 
-        if (this.state.characters && !this.state.showComments) {
-                const characters = this.state.characters.map(character => {
-                    return (
-                        <div key={character.id}>
-                            <Character
-                            name={character.name}
-                            description={character.description}
-                            numberOfVotes={character.number_of_votes}
-                            clicked={() => this.toggleCharactersHandler(character.id)} />
-                        </div>
-                    ) 
-                });
-                return (
-                    <div>
-                    {characters}
-                    </div>
-                )
         } else {
             return (<div>Select character to show comments</div>)
         }

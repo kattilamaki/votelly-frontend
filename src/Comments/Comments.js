@@ -23,7 +23,7 @@ class Comments extends Component {
 
     render() {
 
-        if (this.state.comments && this.state.selectedCharacter !== null) {
+        if (this.state.comments && this.props.showComments) {
             const comments = this.state.comments.map(comment => {
                 return (
                     <div key={comment.id}>
