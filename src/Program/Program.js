@@ -8,7 +8,7 @@ const person = (props) => {
             onClick={props.clicked}>
             {props.name}
             </h1>
-            <img class="programImage" src={props.imageUrl} alt={props.imageAltText} onClick={props.clicked} />
+            <img className="programImage" src={props.imageUrl} alt={props.imageAltText} onClick={props.clicked} />
             <p>{props.description}</p>
             <p>{props.relatedProgram}</p>
         </div>
