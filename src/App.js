@@ -28,6 +28,7 @@ toggleProgramsHandler = (programId) => {
       return <Program
       name={program.name}
       description={program.description}
+      imageUrl={program.image}
       programId={program.id}
       key={program.id}
       clicked={() => this.toggleProgramsHandler(program.id)}
