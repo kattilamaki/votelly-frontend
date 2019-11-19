@@ -28,6 +28,22 @@ class Characters extends Component {
         showComments: true});
     }
 
+    voteCharacterHandler = (name, description, votes, id, alt_text) => {
+        const payload = {
+            "name": name,
+            "description": description,
+            "number_of_votes": votes + 1,
+            "image_alt_text": alt_text
+        }
+        axios.put('http://localhost:8000/api/characters/' + id, payload)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
     render() {
 
         if (this.state.characters) {
@@ -40,7 +56,8 @@ class Characters extends Component {
                         imageAltText={character.image_alt_text}
                         description={character.description}
                         numberOfVotes={character.number_of_votes}
-                        clicked={() => this.toggleCharactersHandler(character.id)} />
+                        clicked={() => this.toggleCharactersHandler(character.id)} 
+                        voted={() => this.voteCharacterHandler(character.name, character.description, character.number_of_votes, character.id, character.image_alt_text)} />
                     </div>
                 ) 
             });
