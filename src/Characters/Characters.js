@@ -36,6 +36,8 @@ class Characters extends Component {
                     <div key={character.id}>
                         <Character
                         name={character.name}
+                        imageUrl={character.character_photo}
+                        imageAltText={character.image_alt_text}
                         description={character.description}
                         numberOfVotes={character.number_of_votes}
                         clicked={() => this.toggleCharactersHandler(character.id)} />
