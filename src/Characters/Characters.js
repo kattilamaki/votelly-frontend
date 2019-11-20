@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Character from '../Characters/Character/Character';
 import Comments from '../Comments/Comments';
+import Progress from '../Progress/Progress';
 
 class Characters extends Component {
 
@@ -61,12 +62,22 @@ class Characters extends Component {
                         clicked={() => this.toggleCharactersHandler(character.id)} 
                         voted={() => this.voteCharacterHandler(character.name, character.description, character.number_of_votes, character.id, character.image_alt_text)} />
                     </div>
-                ) 
+                )
+            });
+
+            const progress = this.state.characters.map(character => {
+                return (
+                    <Progress
+                    characterName={character.name}
+                    voteCount={character.number_of_votes}
+                    totalVotes='100' />
+                )
             });
 
             return (
             <div>
             {characters}
+            {progress}
             <Comments 
                 selectedCharacter={this.state.selectedCharacter}
                 showComments={this.state.showComments} />
