@@ -8,17 +8,19 @@ class Characters extends Component {
     state = {
         characters: null,
         selectedCharacter: null,
-        showComments: false
+        showComments: false,
+        update: false
     }
 
     componentDidUpdate() {
-        if (this.state.selectedProgram !== this.props.selectedProgram) {
+        if (this.state.selectedProgram !== this.props.selectedProgram || this.state.update === true) {
             axios.get('http://localhost:8000/api/program/' + this.props.selectedProgram + '/characters/')
             .then(response => {
             this.setState(
                 {characters: response.data.data,
                 selectedProgram: this.props.selectedProgram,
-                showComments: false});
+                showComments: false,
+                update: false});
             })
         }
     }
@@ -37,7 +39,7 @@ class Characters extends Component {
         }
         axios.put('http://localhost:8000/api/characters/' + id, payload)
         .then(response => {
-            console.log(response);
+            this.setState( {update: true});
         })
         .catch(error => {
             console.log(error);
