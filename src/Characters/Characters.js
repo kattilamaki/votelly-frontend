@@ -26,6 +26,14 @@ class Characters extends Component {
         }
     }
 
+    countTotalVotes = () => {
+        let totalVotes = 0;
+        this.state.characters.map(character => {
+            totalVotes = totalVotes + character.number_of_votes;
+        });
+        return (totalVotes.toString())     
+    }
+
     toggleCharactersHandler = (characterId) => {
         this.setState({selectedCharacter: characterId,
         showComments: true});
@@ -67,10 +75,10 @@ class Characters extends Component {
 
             const progress = this.state.characters.map(character => {
                 return (
-                    <Progress
+                    <Progress key={character.id}
                     characterName={character.name}
                     voteCount={character.number_of_votes}
-                    totalVotes='100' />
+                    totalVotes={this.countTotalVotes()} />
                 )
             });
 
