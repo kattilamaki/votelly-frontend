@@ -3,6 +3,7 @@ import axios from 'axios';
 import Character from '../Characters/Character/Character';
 import Comments from '../Comments/Comments';
 import Progress from '../Progress/Progress';
+import PostComment from '../Comments/PostComment/PostComment';
 
 class Characters extends Component {
 
@@ -86,6 +87,8 @@ class Characters extends Component {
             <div>
             {characters}
             {progress}
+            <PostComment
+                selectedCharacter={this.state.selectedCharacter} />
             <Comments 
                 selectedCharacter={this.state.selectedCharacter}
                 showComments={this.state.showComments} />

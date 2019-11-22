@@ -35,7 +35,9 @@ class Comments extends Component {
             });
 
             return (
-            <div>{comments}</div>
+            <div>
+                {comments}
+            </div>
             )
         }
         else {
