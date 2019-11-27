@@ -5,7 +5,6 @@ class PostComment extends Component {
 
     state = {
         commentText: null,
-        postComment: false
     }
 
     postComment = () => {
@@ -23,12 +22,6 @@ class PostComment extends Component {
         .catch(error => {
             console.log(error);
         });
-    }
-
-    postCommentHandler = () => {
-        this.setState ({
-            postComment: true
-        })
     }
 
     initCommentHandler = (event) => {
