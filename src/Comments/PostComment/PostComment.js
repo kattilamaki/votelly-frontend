@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const postComment = (props) => {
+class PostComment extends Component {
 
-    if (props.selectedCharacter !== null) {
-        return (
-            <div>
-                <form>
+    render () {
+        if (this.props.selectedCharacter !== null) {
+            return (
+                <div>
                     Comment: <input type="text" />
                     <input type="submit" value="Comment" />
-                </form>
-            </div>
-        );
-    } else {
-        return ('Select ccharacter to post comment')
+                </div>
+            );
+        } else {
+            return ('Select character to post comment')
+        }
     }
-};
+}   
 
-export default postComment;
+export default PostComment;
