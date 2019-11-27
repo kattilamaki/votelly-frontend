@@ -8,7 +8,8 @@ class Comments extends Component {
     state = {
         comments: null,
         selectedCharacter: null,
-        selectedProgram: null
+        selectedProgram: null,
+        commentText: null
     }
 
     componentDidUpdate() {
@@ -20,6 +21,29 @@ class Comments extends Component {
                 selectedProgram: this.props.selectedProgram});
             })
         }
+    }
+
+    postComment = (event) => {
+        const now = new Date();
+        const payload = {
+            "comment_text": this.state.commentText,
+            "related_character": this.props.selectedCharacter,
+            "comment_time": now
+        }
+        axios.post('http://localhost:8000/api/character/' + this.props.selectedCharacter
+        + '/comments/', payload)
+        .then(response => {
+            this.setState( {postCommment: false});
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    initCommentHandler = (event) => {
+         this.setState ({
+            commentText: event.target.value,
+         })
     }
 
     render() {
@@ -38,7 +62,8 @@ class Comments extends Component {
             return (
             <div>
                 <PostComment
-                selectedCharacter={this.state.selectedCharacter} />
+                postComment={(event) => this.postComment}
+                getComment={(event) => this.initCommentHandler} />
                 {comments}
             </div>
             )
