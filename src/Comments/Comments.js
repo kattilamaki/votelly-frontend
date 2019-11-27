@@ -5,25 +5,32 @@ import PostComment from '../Comments/PostComment/PostComment';
 
 class Comments extends Component {
 
+    constructor(props){
+        super(props);
+        this.onChange = this.onChange.bind(this);
+      }
+
     state = {
         comments: null,
         selectedCharacter: null,
         selectedProgram: null,
-        commentText: null
+        commentText: "",
+        newComments: false
     }
 
     componentDidUpdate() {
-        if (this.state.selectedCharacter !== this.props.selectedCharacter) {
+        if (this.state.selectedCharacter !== this.props.selectedCharacter || this.state.newComments) {
             axios.get('http://localhost:8000/api/character/' + this.props.selectedCharacter + '/comments/')
             .then(response => {
             this.setState({comments: response.data.data, 
                 selectedCharacter: this.props.selectedCharacter,
-                selectedProgram: this.props.selectedProgram});
+                selectedProgram: this.props.selectedProgram,
+                newComments: false});
             })
         }
     }
 
-    postComment = (event) => {
+    commentCharacter = (event) => {
         const now = new Date();
         const payload = {
             "comment_text": this.state.commentText,
@@ -33,17 +40,15 @@ class Comments extends Component {
         axios.post('http://localhost:8000/api/character/' + this.props.selectedCharacter
         + '/comments/', payload)
         .then(response => {
-            this.setState( {postCommment: false});
+            this.setState({newComments: true})
         })
         .catch(error => {
             console.log(error);
         });
     }
 
-    initCommentHandler = (event) => {
-         this.setState ({
-            commentText: event.target.value,
-         })
+    onChange(event) {
+        this.setState({commentText: event.target.value})
     }
 
     render() {
@@ -62,8 +67,9 @@ class Comments extends Component {
             return (
             <div>
                 <PostComment
-                postComment={(event) => this.postComment}
-                getComment={(event) => this.initCommentHandler} />
+                onChange={this.onChange}
+                clicked={this.commentCharacter} 
+                />
                 {comments}
             </div>
             )
