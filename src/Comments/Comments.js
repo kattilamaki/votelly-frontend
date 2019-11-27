@@ -5,21 +5,51 @@ import PostComment from '../Comments/PostComment/PostComment';
 
 class Comments extends Component {
 
+    constructor(props){
+        super(props);
+        this.onChange = this.onChange.bind(this);
+      }
+
     state = {
         comments: null,
         selectedCharacter: null,
-        selectedProgram: null
+        selectedProgram: null,
+        commentText: "",
+        newComments: false,
     }
 
     componentDidUpdate() {
-        if (this.state.selectedCharacter !== this.props.selectedCharacter) {
+        if (this.state.selectedCharacter !== this.props.selectedCharacter || this.state.newComments) {
             axios.get('http://localhost:8000/api/character/' + this.props.selectedCharacter + '/comments/')
             .then(response => {
             this.setState({comments: response.data.data, 
                 selectedCharacter: this.props.selectedCharacter,
-                selectedProgram: this.props.selectedProgram});
+                selectedProgram: this.props.selectedProgram,
+                newComments: false});
             })
         }
+    }
+
+    commentCharacter = (event) => {
+        const now = new Date();
+        const payload = {
+            "comment_text": this.state.commentText,
+            "related_character": this.props.selectedCharacter,
+            "comment_time": now
+        }
+        axios.post('http://localhost:8000/api/character/' + this.props.selectedCharacter
+        + '/comments/', payload)
+        .then(response => {
+            this.setState({newComments: true,
+            commentText: ""})
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    onChange(event) {
+        this.setState({commentText: event.target.value})
     }
 
     render() {
@@ -38,7 +68,10 @@ class Comments extends Component {
             return (
             <div>
                 <PostComment
-                selectedCharacter={this.state.selectedCharacter} />
+                onChange={this.onChange}
+                clicked={this.commentCharacter} 
+                inputValue={this.state.commentText}
+                />
                 {comments}
             </div>
             )
