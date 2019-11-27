@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Comment from '../Comments/Comment/Comment';
+import PostComment from '../Comments/PostComment/PostComment';
 
 class Comments extends Component {
 
@@ -36,6 +37,8 @@ class Comments extends Component {
 
             return (
             <div>
+                <PostComment
+                selectedCharacter={this.state.selectedCharacter} />
                 {comments}
             </div>
             )
