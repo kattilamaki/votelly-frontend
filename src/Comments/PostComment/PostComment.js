@@ -4,7 +4,7 @@ const postComments = (props) => {
 
     return (
         <div>
-        <input type="text" onChange={props.onChange} />
+        <input type="text" value={props.inputValue} onChange={props.onChange} />
         <button onClick={props.clicked}>Comment</button>
         </div>
     );    

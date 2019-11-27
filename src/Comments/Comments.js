@@ -15,7 +15,7 @@ class Comments extends Component {
         selectedCharacter: null,
         selectedProgram: null,
         commentText: "",
-        newComments: false
+        newComments: false,
     }
 
     componentDidUpdate() {
@@ -40,7 +40,8 @@ class Comments extends Component {
         axios.post('http://localhost:8000/api/character/' + this.props.selectedCharacter
         + '/comments/', payload)
         .then(response => {
-            this.setState({newComments: true})
+            this.setState({newComments: true,
+            commentText: ""})
         })
         .catch(error => {
             console.log(error);
@@ -69,6 +70,7 @@ class Comments extends Component {
                 <PostComment
                 onChange={this.onChange}
                 clicked={this.commentCharacter} 
+                inputValue={this.state.commentText}
                 />
                 {comments}
             </div>
