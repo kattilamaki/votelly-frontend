@@ -36,8 +36,10 @@ class Characters extends Component {
     }
 
     toggleCharactersHandler = (characterId) => {
-        this.setState({selectedCharacter: characterId,
-        showComments: true});
+        this.setState({
+            selectedCharacter: characterId,
+            showComments: true
+        });
     }
 
     voteCharacterHandler = (name, description, votes, id, alt_text) => {
