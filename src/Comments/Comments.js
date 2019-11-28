@@ -55,7 +55,7 @@ class Comments extends Component {
     formatDateTime(dt) {
         const dateTime = new Date(dt);
         const date = dateTime.getDate() + '.' + dateTime.getMonth() + '.' + dateTime.getFullYear();
-        const time = dateTime.getHours() + ':' + dateTime.getMinutes();
+        const time = ('0' + dateTime.getHours()).slice(-2) + ':' + ('0' + dateTime.getMinutes()).slice(-2);
         return (date + ' ' + time)
     }
 
