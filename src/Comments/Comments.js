@@ -79,7 +79,7 @@ class Comments extends Component {
                 clicked={this.commentCharacter} 
                 inputValue={this.state.commentText}
                 />
-                {comments}
+                {comments.reverse()}
             </div>
             )
         }
