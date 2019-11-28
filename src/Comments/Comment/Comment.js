@@ -5,8 +5,8 @@ const comment = (props) => {
 
     return (
         <div className={classes.Comment}>
-        <p>{props.commentText}</p>
         <p>{props.commentTime}</p>
+        <p>{props.commentText}</p>
         </div>
     );
 };

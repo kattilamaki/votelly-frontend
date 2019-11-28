@@ -52,6 +52,13 @@ class Comments extends Component {
         this.setState({commentText: event.target.value})
     }
 
+    formatDateTime(dt) {
+        const dateTime = new Date(dt);
+        const date = dateTime.getDate() + '.' + dateTime.getMonth() + '.' + dateTime.getFullYear();
+        const time = dateTime.getHours() + ':' + dateTime.getMinutes();
+        return (date + ' ' + time)
+    }
+
     render() {
 
         if (this.state.comments && this.props.showComments) {
@@ -60,7 +67,7 @@ class Comments extends Component {
                     <div key={comment.id}>
                         <Comment
                         commentText={comment.comment_text}
-                        commentTime={comment.comment_time} />
+                        commentTime={this.formatDateTime(comment.comment_time)} />
                     </div>
                 ) 
             });
