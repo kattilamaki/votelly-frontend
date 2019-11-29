@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Program from './Program/Program';
 import Characters from './Characters/Characters';
+import TopMenu from './TopMenu/TopMenu'
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ toggleProgramsHandler = (programId) => {
 
     return (
       <div>
+        <TopMenu />
         {programs}
         <Characters
           selectedProgram={this.state.selectedProgram} />
