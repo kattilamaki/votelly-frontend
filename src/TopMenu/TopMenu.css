@@ -4,6 +4,9 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #838484;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
   }
   
   li {
@@ -18,7 +21,10 @@ ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #111;
+  }
+
+  .active {
+    background-color: #4CAF50;
   }
