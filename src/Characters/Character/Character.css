@@ -1,6 +1,6 @@
 .characterImage {
     width: 150px;
-    height: 150 px;
+    height: 150px;
     border-radius: 50%;
 }
 
@@ -8,17 +8,13 @@
     margin: 5px;
     float: left;
     width: 250px;
-    height: 350px;
-    transition: transform .2s;
+    height: 400px;
+    transition: transform .5s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+    border-radius: 4%;
 }
   
 div.character:hover {
     transform: rotateY(-180deg);
-}
-  
-div.desc {
-    padding: 15px;
-    text-align: center;
 }
