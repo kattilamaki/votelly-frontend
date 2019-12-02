@@ -1,18 +1,23 @@
 div.gallery {
     margin: 5px;
-    border: 1px solid #ccc;
     float: left;
     width: 250px;
     height: 350px;
+    transition: transform .2s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
 }
   
 div.gallery:hover {
-    border: 1px solid #777;
+    transform: translateY(1rem) scale(1.03);
 }
   
 div.gallery img {
-    width: 100%;
+    width: 90%;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
   
 div.desc {
