@@ -4,10 +4,10 @@ import React from 'react';
 const progress = (props) => {
 
     return (
-        <div>
-        <p>{props.characterName}:
-        <progress value={props.voteCount} max={props.totalVotes}></progress></p>
-        </div>
+        <tr>
+        <td>{props.characterName}</td>
+        <td><progress value={props.voteCount} max={props.totalVotes}></progress></td>
+        </tr>
     );
 };
 

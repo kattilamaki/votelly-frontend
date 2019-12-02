@@ -87,7 +87,13 @@ class Characters extends Component {
             return (
             <div>
             {characters}
-            {progress}
+            <table>
+                <tr>
+                    <td>Character</td>
+                    <td>Votes</td>
+                </tr>
+                {progress}
+            </table>
             <Comments 
                 selectedCharacter={this.state.selectedCharacter}
                 showComments={this.state.showComments} />
