@@ -3,10 +3,10 @@ import './Program.css';
 
 const person = (props) => {
     return (
-        <div className="gallery">
-            <img className="programImage" src={props.imageUrl} alt={props.imageAltText} onClick={props.clicked} />
-            <h2 onClick={props.clicked}>{props.name}</h2>
-            <p>{props.description}</p>
+        <div className="program-card">
+            <img className="program-card-image" src={props.imageUrl} alt={props.imageAltText} onClick={props.clicked} />
+            <h2 className="program-card-name" onClick={props.clicked}>{props.name}</h2>
+            <p className="program-card-description">{props.description}</p>
         </div>
     )
 };

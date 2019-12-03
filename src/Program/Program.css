@@ -1,5 +1,5 @@
-div.gallery {
-    margin: 5px;
+.program-card {
+    margin: 10px;
     float: left;
     width: 250px;
     height: 400px;
@@ -8,16 +8,16 @@ div.gallery {
     text-align: center;
 }
 
-p {
+.program-card:hover {
+    transform: translateY(1rem) scale(1.03);
+}
+
+.program-card-description {
     margin-left: 10px;
     margin-right: 10px;
 }
   
-div.gallery:hover {
-    transform: translateY(1rem) scale(1.03);
-}
-  
-div.gallery img {
+.program-card-image {
     width: 250px;
     height: 200px;
     object-fit: cover;
