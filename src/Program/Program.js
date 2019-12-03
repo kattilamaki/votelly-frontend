@@ -5,9 +5,8 @@ const person = (props) => {
     return (
         <div className="gallery">
             <img className="programImage" src={props.imageUrl} alt={props.imageAltText} onClick={props.clicked} />
-            <h1 onClick={props.clicked}>{props.name}</h1>
+            <h2 onClick={props.clicked}>{props.name}</h2>
             <p>{props.description}</p>
-            <p>{props.relatedProgram}</p>
         </div>
     )
 };

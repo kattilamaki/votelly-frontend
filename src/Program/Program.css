@@ -2,10 +2,15 @@ div.gallery {
     margin: 5px;
     float: left;
     width: 250px;
-    height: 350px;
+    height: 400px;
     transition: transform .2s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+}
+
+p {
+    margin-left: 10px;
+    margin-right: 10px;
 }
   
 div.gallery:hover {
@@ -13,9 +18,7 @@ div.gallery:hover {
 }
   
 div.gallery img {
-    width: 90%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
 }
