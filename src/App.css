@@ -29,3 +29,8 @@ body {
   color: #525452;
   padding: 3rem;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}

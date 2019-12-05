@@ -3,6 +3,7 @@ import axios from 'axios';
 import Character from '../Characters/Character/Character';
 import Comments from '../Comments/Comments';
 import Progress from '../Progress/Progress';
+import './Characters.css';
 
 class Characters extends Component {
 
@@ -87,7 +88,7 @@ class Characters extends Component {
             return (
             <div>
             {characters}
-            <table>
+            <table className="voting-status">
                 <tr>
                     <td>Character</td>
                     <td>Votes</td>

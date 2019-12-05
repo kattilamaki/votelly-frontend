@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Comment from '../Comments/Comment/Comment';
 import PostComment from '../Comments/PostComment/PostComment';
+import './Comments.css';
 
 class Comments extends Component {
 
@@ -73,7 +74,7 @@ class Comments extends Component {
             });
 
             return (
-            <div>
+            <div className="comments-section">
                 <PostComment
                 onChange={this.onChange}
                 clicked={this.commentCharacter} 
