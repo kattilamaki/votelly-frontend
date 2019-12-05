@@ -14,7 +14,3 @@
     text-align: center;
     border-radius: 4%;
 }
-  
-div.character:hover {
-    transform: rotateY(-180deg);
-}

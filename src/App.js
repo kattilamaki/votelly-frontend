@@ -39,7 +39,7 @@ toggleProgramsHandler = (programId) => {
       <div>
         <TopMenu />
         <div className="flex-container">
-        <div>{programs}</div>
+        <div className="horizontal-scroll">{programs}</div>
         <div><Characters
           selectedProgram={this.state.selectedProgram} />
         </div>
