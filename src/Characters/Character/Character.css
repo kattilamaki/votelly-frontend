@@ -1,16 +1,16 @@
 .characterImage {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .character {
-    margin: 5px;
-    float: left;
-    width: 250px;
-    height: 400px;
-    transition: transform .5s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    border-radius: 4%;
+  margin: 5px;
+  float: left;
+  width: 250px;
+  height: 400px;
+  transition: transform 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border-radius: 4%;
 }
